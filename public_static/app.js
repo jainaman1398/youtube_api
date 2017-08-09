@@ -7,6 +7,8 @@ $(function() {
        var request = gapi.client.youtube.search.list({
             part: "snippet",
             type: "video",
+          //  forUsername:'Gaurav Gupta',
+           ChannelId:'',
             q: encodeURIComponent($("#search").val()).replace(/%20/g, "+"),
             maxResults: 3,
             order: "viewCount",
@@ -15,6 +17,7 @@ $(function() {
        // execute the request
        request.execute(function(response) {
           var results = response.result;
+          console.log(results);
           $("#results").html("");
           $.each(results.items, function(index, item) {
             $.get("./item.html", function(data) {
